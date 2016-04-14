@@ -45,8 +45,9 @@ public class Controls : MonoBehaviour
 
 
     public float speed = 8;
-    public float jumpSpeed = 99999999999;
+    public float jumpSpeed = 4;
     public float rotateSpeed = 15;
+    float gravity = 10;
 
     private Vector3 moveDirection;
     private Vector3 targetDirection;
@@ -89,17 +90,6 @@ public class Controls : MonoBehaviour
 
         if (cont.isGrounded)
         {
-            moveDirection = (horizontal * right + vertical * -forward);
-
-            moveDirection = transform.TransformDirection(moveDirection);
-            //normalize moveVector if magnitude > 1
-            if (moveDirection.magnitude > 1)
-            {
-                moveDirection = Vector3.Normalize(moveDirection);
-            }
-            moveDirection *= speed;
-            moveDirection = (horizontal * right + vertical * -forward);
-
             if (targetDirection != Vector3.zero)
             {
                moveDirection = Vector3.Lerp(moveDirection, targetDirection, rotateSpeed * Time.deltaTime);
@@ -109,6 +99,7 @@ public class Controls : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 moveDirection += Vector3.up * jumpSpeed;
+                Debug.Log("jump is pressed");
             }
 
         }
@@ -123,7 +114,8 @@ public class Controls : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y + 180, transform.eulerAngles.z);
         }*/
 
-        
+        //test
+        Debug.Log(cont.isGrounded);
 
         //Transform moveVector to world space
         moveDirection = transform.TransformDirection(moveDirection);
@@ -137,10 +129,14 @@ public class Controls : MonoBehaviour
         //Multiply moveVector by moveSpeed
         moveDirection = (horizontal * right + vertical * -forward) * speed;
 
+        //add gravity
+        moveDirection.y -= gravity;
+
         //Multiply moveVector by DeltaTime
         moveDirection *= Time.deltaTime;
 
         //Move character in world space
         cont.Move(moveDirection);
+
     }
 }
