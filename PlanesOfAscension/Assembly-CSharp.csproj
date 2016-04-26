@@ -54,10 +54,14 @@
      <Compile Include="Assets\Scripts\Attributes\Wisdom.cs" />
      <Compile Include="Assets\Scripts\Control - Tyler\CameraSpringArm.cs" />
      <Compile Include="Assets\Scripts\Control - Tyler\PlayerInputHandler.cs" />
+     <Compile Include="Assets\Scripts\Control - Tyler\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\HUDHandler.cs" />
+     <Compile Include="Assets\Scripts\InventoryHandler.cs" />
      <Compile Include="Assets\Scripts\Player Control\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\Player Control\Controls.cs" />
      <Compile Include="Assets\Scripts\Player Control\MouseAimCamera.cs" />
      <Compile Include="Assets\Scripts\Player Control\reference.cs" />
+     <Compile Include="Assets\Scripts\StatDisplayHandler.cs" />
      <Compile Include="Assets\Scripts\TreeStructure.cs" />
      <Compile Include="Assets\Scripts\WorldGen\DungeonGenerator.cs" />
      <Compile Include="Assets\Scripts\WorldGen\DungeonGeneratorOld.cs" />
